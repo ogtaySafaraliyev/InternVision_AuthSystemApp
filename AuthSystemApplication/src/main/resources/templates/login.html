@@ -16,14 +16,14 @@
                 <span th:text="${success}"></span>
             </div>
             
+            <!-- Logout Success Message -->
+            <div th:if="${logoutSuccess}" class="alert alert-success">
+                <span th:text="${logoutSuccess}"></span>
+            </div>
+            
             <!-- Error Message -->
             <div th:if="${error}" class="alert alert-error">
                 <span th:text="${error}"></span>
-            </div>
-            
-            <!-- Logout Message -->
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out successfully.
             </div>
             
             <!-- Login Form -->
@@ -54,6 +54,10 @@
             
             <p class="text-center">
                 Don't have an account? <a th:href="@{/register}">Register here</a>
+            </p>
+            
+            <p class="text-center">
+                <a th:href="@{/forgot-password}">Forgot your password?</a>
             </p>
         </div>
     </div>

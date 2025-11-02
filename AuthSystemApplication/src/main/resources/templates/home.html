@@ -11,6 +11,11 @@
         <div class="card">
             <h1>Welcome Back!</h1>
             
+            <!-- Success Message -->
+            <div th:if="${success}" class="alert alert-success">
+                <span th:text="${success}"></span>
+            </div>
+            
             <div class="user-info">
                 <div class="info-item">
                     <span class="label">Username:</span>
@@ -29,6 +34,7 @@
             </div>
             
             <div class="button-group">
+                <a th:href="@{/change-password}" class="btn btn-primary">Change Password</a>
                 <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
             </div>
         </div>

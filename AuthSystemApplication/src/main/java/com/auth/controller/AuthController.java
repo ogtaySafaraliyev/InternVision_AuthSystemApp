@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -85,7 +86,7 @@ public class AuthController {
     
     // Logout
     @GetMapping("/logout")
-    public String logout(HttpServletResponse response) {
+    public String logout(HttpServletResponse response, RedirectAttributes redirectAttributes) {
         // Delete JWT cookie
         Cookie jwtCookie = new Cookie("JWT_TOKEN", null);
         jwtCookie.setHttpOnly(true);
@@ -93,6 +94,8 @@ public class AuthController {
         jwtCookie.setMaxAge(0);
         response.addCookie(jwtCookie);
         
-        return "redirect:/login?logout";
+        // Use flash attribute instead of URL parameter
+        redirectAttributes.addFlashAttribute("logoutSuccess", "You have been logged out successfully.");
+        return "redirect:/login";
     }
 }
