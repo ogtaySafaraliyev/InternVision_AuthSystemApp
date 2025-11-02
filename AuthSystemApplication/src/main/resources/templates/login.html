@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Auth System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Login</h1>
+            
+            <!-- Success Message -->
+            <div th:if="${success}" class="alert alert-success">
+                <span th:text="${success}"></span>
+            </div>
+            
+            <!-- Error Message -->
+            <div th:if="${error}" class="alert alert-error">
+                <span th:text="${error}"></span>
+            </div>
+            
+            <!-- Logout Message -->
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out successfully.
+            </div>
+            
+            <!-- Login Form -->
+            <form th:action="@{/login}" th:object="${user}" method="post">
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" 
+                           id="username" 
+                           th:field="*{username}" 
+                           class="form-control"
+                           placeholder="Enter username"
+                           required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" 
+                           id="password" 
+                           th:field="*{password}" 
+                           class="form-control"
+                           placeholder="Enter password"
+                           required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            
+            <p class="text-center">
+                Don't have an account? <a th:href="@{/register}">Register here</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Auth System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Welcome Back!</h1>
+            
+            <div class="user-info">
+                <div class="info-item">
+                    <span class="label">Username:</span>
+                    <span class="value" th:text="${username}"></span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="label">Email:</span>
+                    <span class="value" th:text="${email}"></span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="label">Member since:</span>
+                    <span class="value" th:text="${#temporals.format(createdAt, 'MMM dd, yyyy HH:mm')}"></span>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
